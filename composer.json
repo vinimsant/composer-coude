@@ -1,0 +1,9 @@
+{
+    "name": "viniv/composer",
+    "autoload": {
+        "psr-4": {
+            "Viniv\\Composer\\": "src/"
+        }
+    },
+    "require": {}
+}
