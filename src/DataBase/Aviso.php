@@ -1,10 +1,11 @@
-<?php
+<?php 
 
-    namespace composer\src\DataBase\Aviso;
+    require_once 'Conexao.php'; 
+    require_once 'Process/Aviso.php';
+
+    use src\Process\Aviso as Aviso_Process;
+
     
-    use Conexao;
-
-   
 
     class Aviso{
 
@@ -12,13 +13,25 @@
 
         public function inserir_aviso(){
 
-            $conexao = new Conexao();
-            $con = $conexao->conectar();
-            $smt = $con->prepare("INSERT INTO avisos (titulo, aviso) values(:titulo, :aviso)");
-            $smt->bindParam(":titulo", );
-            $smt->bindParam(":aviso", )
             
-        }
-        
+
+
+            $conector = new Conexao();
+
+            
+            $titulo = "teste";
+            $aviso = "criando aviso para testar a classe";
+            
+            $con = $conector->conectar();
+            $smt = $con->prepare("INSERT INTO avisos (titulo_aviso, aviso) values(:titulo, :aviso)");
+            $smt->bindParam(":titulo", $titulo);
+            $smt->bindParam(":aviso", $aviso);
+
+            $smt->execute();
+            
+        }        
         
     }
+
+    $aviso = new Aviso();
+    $aviso->inserir_aviso();

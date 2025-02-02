@@ -1,6 +1,6 @@
 <?php
 
-namespace composer\src\config;
+namespace src\config;
 
 $banco = "MuralAvisos";
 $senha = "";

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'viniv/composer',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '4a891328c3501cbc349b0149b07c6022c425758a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'viniv/composer' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '4a891328c3501cbc349b0149b07c6022c425758a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

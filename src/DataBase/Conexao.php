@@ -1,12 +1,11 @@
 <?php
 
-namespace composer\src\DataBase\Conexao;
 
 class Conexao{
     public function conectar(){
         $con = null;
         $host = "localhost";
-        $banco = "MuralDeAvisos";
+        $banco = "muraldedeavisos";
         $senha = "";
         $usuario = "root";
 
