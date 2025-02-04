@@ -1,4 +1,5 @@
 <?php
+    namespace src\Process\Usuario;
 
     class Usuario{
         private $id_usuario;
