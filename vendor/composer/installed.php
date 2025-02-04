@@ -3,7 +3,7 @@
         'name' => 'viniv/composer',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'abe3a92c68b4130efcf433158ab8d8aa4d781767',
+        'reference' => '496e6fd4aaf3f6afb510bbae12d493cf7b496f87',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'viniv/composer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'abe3a92c68b4130efcf433158ab8d8aa4d781767',
+            'reference' => '496e6fd4aaf3f6afb510bbae12d493cf7b496f87',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
