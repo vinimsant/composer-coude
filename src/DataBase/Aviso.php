@@ -1,39 +1,62 @@
 <?php 
+    namespace src\DataBase\Aviso;
 
+use PDOException;
+use  src\Process\Aviso as AvisoProcess;
+    use src\DataBase\Conexao as conexao;
     
 
-    use src\Process\Aviso\Aviso as Aviso_Process;
-
-    use src\Process\Usuario as Usuario_Process;  
-
-    require_once '../Process/Aviso.php';
+    require_once 'src/Process/Aviso.php';
+    require_once 'Conexao.php';
 
 
 
-    function inserir_aviso($aviso){
+    class Aviso{
 
-        foreach($aviso as $av){
-            $avisi = new Aviso_Process;
-            $avisi = $av;
-            $titulo = $avisi->__get("titulo_aviso");
-            $aviso = $avisi->__get("aviso");
-            $conector = new Conexao();
+        private $con;
 
-            
-            $con = $conector->conectar();
-            $smt = $con->prepare("INSERT INTO avisos (titulo_aviso, aviso) values(:titulo, :aviso)");
-            $smt->bindParam(":titulo", $titulo);
-            $smt->bindParam(":aviso", $aviso);
-
-            $smt->execute();
+        public function __construct(){
+            $conexao = new conexao\Conexao;
+            $this->con = $conexao->conectar();
         }
-            
-    }
+        public function inserir_aviso($avi){
 
-    $aviso = new Aviso_Process;
-    $aviso->__set("titulo_aviso", "teste avi");
-    $aviso->__set("aviso", "teste avi");
-    inserir_aviso($aviso);
+            try{
+                $aviso = new AvisoProcess\Aviso;
+                $aviso = $avi;
+        
+                $titulo = $aviso->__get("titulo_aviso");
+                $avisoD = $aviso->__get("aviso");
+        
+                $smt = $this->con->prepare("INSERT INTO avisos (titulo_aviso, aviso) values(:titulo, :aviso)");
+                $smt->bindParam(":titulo", $titulo);
+                $smt->bindParam(":aviso", $avisoD);
+        
+                $smt->execute();
+            }catch(PDOException $e){
+                echo "Erro ao inserir avisos $e";
+            }
+                
+        }
+
+        public function pesquisar_todos_avisos(){
+
+            try{
+                $sql = "SELECT * FROM avisos";
+                $stmt = $this->con->prepare($sql);
+                $stmt->execute();
+                $dados = $stmt->fetchAll();
+                return $dados;
+            }catch(\PDOException $e){
+                echo "Erro ao pesquisar avisos $e";
+                return null;
+            }
+
+        }
+    }
+    
+
+    
 
     
 

@@ -1,3 +1,10 @@
+<?php
+namespace v\usuarios\cadastro;
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

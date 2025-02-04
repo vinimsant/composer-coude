@@ -1,3 +1,13 @@
+<?php
+namespace v\avisos\cadastro;
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
