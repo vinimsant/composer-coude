@@ -1,8 +1,8 @@
 <?php 
     namespace src\DataBase\Aviso;
 
-use PDOException;
-use  src\Process\Aviso as AvisoProcess;
+    use PDOException;
+    use  src\Process\Aviso as AvisoProcess;
     use src\DataBase\Conexao as conexao;
     
 
@@ -52,6 +52,37 @@ use  src\Process\Aviso as AvisoProcess;
                 return null;
             }
 
+        }
+
+        public function deletar_aviso($id){
+            try{
+                $sql = "DELETE FROM avisos WHERE id_aviso = :id";
+                $smt = $this->con->prepare($sql);
+                $smt->bindValue(":id", $id);
+                $smt->execute();
+
+            }catch(PDOException $e){
+                echo "Erro ao deletar aviso. <br> Erro = $e";
+            }
+        }
+
+        public function editar_aviso($ob_aviso){
+            $objeto_aviso = new AvisoProcess\Aviso;
+            $objeto_aviso = $ob_aviso;
+            $id = $objeto_aviso->__get("id_aviso");
+            $titulo = $objeto_aviso->__get("titulo_aviso");
+            $aviso = $objeto_aviso->__get("aviso");
+            try{
+                $sql = "UPDATE avisos SET titulo_aviso = :titulo, aviso = :aviso WHERE id_aviso = :id";
+                $smt = $this->con->prepare($sql);
+                $smt->bindValue(":id", $id);
+                $smt->bindValue(":titulo", $titulo);
+                $smt->bindValue(":aviso", $aviso);
+                $smt->execute();
+
+            }catch(PDOException $e){
+                echo "Erro ao editar aviso. <br> Erro = $e";
+            }
         }
     }
     

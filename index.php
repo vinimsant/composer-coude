@@ -1,12 +1,20 @@
 <?php
 namespace index;
 
-use src\DataBase\Aviso;
+use src\DataBase\Aviso as AvisoDB;
+use src\DataBase\Usuario\Usuario as UsuarioDB;
 
 require_once 'src/DataBase/Aviso.php';
+require_once 'src/DataBase/Usuario.php';
 
-$daoA = new Aviso\Aviso;
+//pesquisar avisos
+$daoA = new AvisoDB\Aviso;
 $avisos = $daoA->pesquisar_todos_avisos();
+
+//pesquisar usarios
+$daoU = new UsuarioDB();
+$usarios = $daoU->pesquisar_todos_usuarios();
+
 
 
 
@@ -23,8 +31,14 @@ $avisos = $daoA->pesquisar_todos_avisos();
 </head>
 <body>
     <div class="cabecalho">
-        <nav>
-            <a href=""></a>
+        <nav>          
+            <?php
+            //verificar se tem usuario cadastrado no banco
+             if(count($usarios)!= 0){
+                echo '<a href="v/usuarios/login.php">Login</a>';
+            }else{
+                echo '<a href="v/usuarios/cadastro.php">Cadastrar Usuario</a>';
+            } ?>
         </nav>
     </div>
     <div class="busca">
@@ -33,7 +47,7 @@ $avisos = $daoA->pesquisar_todos_avisos();
                 $titulo = $aviso['titulo_aviso'];
                 $id = $aviso['id_aviso'];
                 $descricao = $aviso['aviso'];
-                echo "<p class='aviso'>$id <br>$titulo <br>$descricao <br></p>";
+                echo "<div class='aviso'><p>$id</p><p>$titulo</p><p>$descricao</p></p></div>";
             }
 
         ?>

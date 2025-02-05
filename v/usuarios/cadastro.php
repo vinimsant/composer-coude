@@ -13,6 +13,7 @@ namespace v\usuarios\cadastro;
     <title>Mural de Avisos</title>
 </head>
 <body>
+    <p>pagina cadastro</p>
     <div>
         <form action="" method="post" id="form_usu" class="form">
             <label for=""></label>
